@@ -1,23 +1,23 @@
 sap.ui.define([
+	// parte declarativa
 	"sap/ui/core/mvc/Controller",
 	"sap/m/MessageToast"
 ], function (Controller, MessageToast) {
+	// zona restrictiva o privada
 	"use strict";
 
 	return Controller.extend("logaligroup.Customers.controller.App", {
+		// funciones que la vista que usa éste controlador tendrá acceso
 
 		onInit: function () {
 
 		},
 
-		onShowHello: function () {
-			
-			var sHello = this.getView().getModel("i18n").getResourceBundle().getText("sayHello");
-			var sName = this.getView().getModel().getProperty("/recipient/name");
-			var sMsg = sHello.concat(" ").concat(sName);
-			
-			MessageToast.show(sMsg);			
-			
+		onOpenHeader: function () {
+
+			//se llama a la funcion openHelloDialog del Component
+			this.getOwnerComponent().openHelloDialog();
+
 		}
 	});
 });

@@ -3,14 +3,11 @@
 		<App class="myCustomCss">
 			<pages>
 				<Page title="{i18n>homePageTitle}">
+					<headerContent>
+						<Button id="helloDialogHeader" icon="sap-icon://action" press=".onOpenHeader" class="sapUiSmallMarginEnd"/>
+					</headerContent>					
 					<content>
-						<Panel headerText="{i18n>helloPanelTitle}" class="sapUiResponsiveMargin" width="auto">
-							<content>
-								<Button text="{i18n>showHelloButtonText}" press=".onShowHello" class="sapUiSmallMarginEnd"/>
-								<Input value="{/recipient/name}" valueLiveUpdate="true" width="60%"/>
-								<Text text="Hello {/recipient/name}" class="sapUiSmallMargin myCustomText sapTheminglight-asColor"/>
-							</content>
-						</Panel>
+						<mvc:XMLView viewName="logaligroup.Customers.view.HelloPanel"/>
 					</content>
 				</Page>
 			</pages>
