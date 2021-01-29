@@ -21,7 +21,8 @@
 							number="{
 									parts: [{path: 'customerWz>PostalCode'}]
 							}"
-							/>
+							type="Navigation"
+							press="onPress"/>
 		</items>
 	</List>
 </mvc:View>
