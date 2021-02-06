@@ -3,7 +3,10 @@
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:cr="logaligroup.Customers.control">
 	<Page title="{i18n>detailPageTitle}" showNavButton="true" navButtonPress=".onNavBack">
-		<ObjectHeader title="{customerWz>ContactName}">
+		<ObjectHeader 
+			responsive="true"
+			fullScreenOptimized="true"
+			title="{customerWz>ContactName}">
 			<attributes>
 				<ObjectAttribute text="{customerWz>Address}"/>
 				<ObjectAttribute text="{customerWz>City}"/>

@@ -1,7 +1,8 @@
 <mvc:View 
 	controllerName="logaligroup.Customers.controller.CustomerList"
 	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
-	<List id="customerList" headerText="{i18n>customerListTitle}" class="sapUiResponsiveMargin" width="auto" 
+	<Panel accessibleRole="Region">
+	<Table id="customerList" headerText="{i18n>customerListTitle}" class="sapUiResponsiveMargin" width="auto" 
 		items="{
 				path: 'customerWz>/Customers',
 				sorter: {
@@ -13,16 +14,41 @@
 			<Toolbar>
 				<Title text="{i18n>customerListTitle}"/>
 				<ToolbarSpacer/>
-				<SearchField width="50%" search=".onFilterCustomers"/>
+				<SearchField width="50%" 
+						search=".onFilterCustomers"
+						ariaLabelledBy="searchFieldLabel"
+						ariaDescribedBy="searchFieldDescription"
+						placeholder="{i18n>searchFieldPlaceHolder}"/>
 			</Toolbar>
-		</headerToolbar>		
+		</headerToolbar>
+		<columns>
+			<Column minScreenWidth="Tablet" demandPopin="false">
+				<Text text="{i18n>columnCompanyName}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>columnContactName}"/>
+			</Column>
+			<Column minScreenWidth="Small" demandPopin="true">
+				<Text text="{i18n>columnCity}"/>
+			</Column>
+			<Column hAlign="End" minScreenWidth="Small" demandPopin="true" width="8em">
+				<Text text="{i18n>columnPostalCode}"/>
+			</Column>
+			<Column hAlign="End">
+				<Text text="{i18n>columnContactTitle}"/>
+			</Column>
+		</columns>		
 		<items>
-			<ObjectListItem title="{customerWz>CompanyName} / {customerWz>ContactName} - {customerWz>City}" 
-							number="{
-									parts: [{path: 'customerWz>PostalCode'}]
-							}"
-							type="Navigation"
-							press="onPress"/>
+			<ColumnListItem type="Navigation" press=".onPress">
+				<cells>
+					<Text text="{customerWz>CompanyName}"/>
+					<ObjectIdentifier title="{customerWz>ContactName}"/>
+					<Text text="{customerWz>City}"/>
+					<ObjectNumber number="{customerWz>PostalCode}" emphasized="false"/>
+					<Text text="{customerWz>ContactTitle}"/>
+				</cells>
+			</ColumnListItem>
 		</items>
-	</List>
+	</Table>
+	</Panel>
 </mvc:View>
